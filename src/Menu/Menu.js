@@ -1,5 +1,7 @@
 import React from 'react';
-
+import Header from './Header';
+import Init from './Init';
+import Add from './Add';
 
 export default class Menu extends React.Component {
 
@@ -13,7 +15,9 @@ export default class Menu extends React.Component {
 		return (
 			<div className="menu">
 		    	<div>
-		    		menu
+		    		<Header title="ReactJS" ></Header>
+		    		<Init />
+		    		<Add />
 		    	</div>
 		     </div>
 		);
