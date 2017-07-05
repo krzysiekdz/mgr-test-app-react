@@ -22338,21 +22338,37 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'initElements',
 		value: function initElements(count) {
-			this.setState({
-				data: this.addService.addFirst(count)
-			});
+			this.setState({ data: this.addService.addFirst(count) });
+		}
+	}, {
+		key: 'addFirst',
+		value: function addFirst(count) {
+			this.setState({ data: this.addService.addFirst(count) });
+		}
+	}, {
+		key: 'addMid',
+		value: function addMid(count) {
+			this.setState({ data: this.addService.addMid(count) });
+		}
+	}, {
+		key: 'addLast',
+		value: function addLast(count) {
+			this.setState({ data: this.addService.addLast(count) });
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var data = this.state.data;
+			// console.log('render: App');
 
-			console.log('render: App');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'app' },
 				_react2.default.createElement(_Menu2.default, {
-					init: this.initElements.bind(this)
+					init: this.initElements.bind(this),
+					addFirst: this.addFirst.bind(this),
+					addMid: this.addMid.bind(this),
+					addLast: this.addLast.bind(this)
 				}),
 				_react2.default.createElement(_ContentTable2.default, { items: data })
 			);
@@ -22417,7 +22433,7 @@ var ContentTable = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			console.log('render: ContentTable');
+			// console.log('render: ContentTable');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'content' },
@@ -22606,7 +22622,11 @@ var Menu = function (_React$Component) {
 	_createClass(Menu, [{
 		key: 'render',
 		value: function render() {
-			var init = this.props.init;
+			var _props = this.props,
+			    init = _props.init,
+			    addFirst = _props.addFirst,
+			    addMid = _props.addMid,
+			    addLast = _props.addLast;
 
 			return _react2.default.createElement(
 				'div',
@@ -22616,7 +22636,7 @@ var Menu = function (_React$Component) {
 					null,
 					_react2.default.createElement(_Header2.default, { title: 'ReactJS' }),
 					_react2.default.createElement(_Init2.default, { init: init }),
-					_react2.default.createElement(_Add2.default, null)
+					_react2.default.createElement(_Add2.default, { addFirst: addFirst, addMid: addMid, addLast: addLast })
 				)
 			);
 		}
@@ -22788,6 +22808,24 @@ var Add = function (_React$Component) {
 	}
 
 	_createClass(Add, [{
+		key: "addFirst",
+		value: function addFirst() {
+			var count = this.refs.inputAdd.value;
+			this.props.addFirst(count);
+		}
+	}, {
+		key: "addMid",
+		value: function addMid() {
+			var count = this.refs.inputAdd.value;
+			this.props.addMid(count);
+		}
+	}, {
+		key: "addLast",
+		value: function addLast() {
+			var count = this.refs.inputAdd.value;
+			this.props.addLast(count);
+		}
+	}, {
 		key: "render",
 		value: function render() {
 
@@ -22796,24 +22834,24 @@ var Add = function (_React$Component) {
 				{ className: "container-action" },
 				_react2.default.createElement(
 					"button",
-					{ className: "btn btn-default btn-menu", name: "addFirst" },
+					{ className: "btn btn-default btn-menu", name: "addFirst", onClick: this.addFirst.bind(this) },
 					"add I"
 				),
 				_react2.default.createElement(
 					"button",
-					{ className: "btn btn-default btn-menu", name: "addMid" },
+					{ className: "btn btn-default btn-menu", name: "addMid", onClick: this.addMid.bind(this) },
 					"add II"
 				),
 				_react2.default.createElement(
 					"button",
-					{ className: "btn btn-default btn-menu", name: "addLast" },
+					{ className: "btn btn-default btn-menu", name: "addLast", onClick: this.addLast.bind(this) },
 					"add III"
 				),
 				_react2.default.createElement(
 					"div",
 					null,
 					"add:",
-					_react2.default.createElement("input", { type: "text", className: "form-control input100", name: "input-add" }),
+					_react2.default.createElement("input", { type: "text", className: "form-control input100", name: "input-add", ref: "inputAdd" }),
 					"elements"
 				)
 			);

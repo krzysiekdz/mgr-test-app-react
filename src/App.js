@@ -15,19 +15,31 @@ export default class App extends React.Component {
 	}	
 
 	initElements(count) { 
-		this.setState({
-			data: this.addService.addFirst(count),
-		});
+		this.setState({data: this.addService.addFirst(count)});
 	}
 
+	addFirst(count) {
+		this.setState({data: this.addService.addFirst(count)});
+	}
+
+	addMid(count) {
+		this.setState({data: this.addService.addMid(count)});
+	}
+
+	addLast(count) {
+		this.setState({data: this.addService.addLast(count)});
+	}
 
 	render() {
 		const {data} = this.state;
-		console.log('render: App');
+		// console.log('render: App');
 		return (
 			<div className="app">
 		    	<Menu
 		    		init={this.initElements.bind(this)}
+		    		addFirst={this.addFirst.bind(this)}
+		    		addMid={this.addMid.bind(this)}
+		    		addLast={this.addLast.bind(this)}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>

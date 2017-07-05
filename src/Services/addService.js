@@ -17,7 +17,7 @@ export default class AddService {
 		var c = this.parse.parseValue(count, this.min, this.max);
 		var newData = this.r.randomObjects(c);
 		this.model.data = newData.concat(this.model.data);
-
+		
 		return this.model.data;
 	}
 

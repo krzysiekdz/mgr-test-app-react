@@ -11,13 +11,13 @@ export default class Menu extends React.Component {
 
 
 	render() {
-		const {init} = this.props;
+		const {init, addFirst, addMid, addLast} = this.props;
 		return (
 			<div className="menu">
 		    	<div>
 		    		<Header title="ReactJS" ></Header>
 		    		<Init init={init} />
-		    		<Add />
+		    		<Add addFirst={addFirst} addMid={addMid} addLast={addLast} />
 		    	</div>
 		     </div>
 		);
