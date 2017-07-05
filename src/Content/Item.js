@@ -7,6 +7,9 @@ export default class Item extends React.Component {
 		super();
 	}	
 
+    componentWillUnmount() {
+        console.log('unmounting: ', this.props.id);
+    }
 
 	render() {
 		const {item} = this.props;

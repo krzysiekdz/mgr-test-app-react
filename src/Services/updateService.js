@@ -74,7 +74,7 @@ export default class UpdateService {
 	}
 
 	update(item, newItem) {
-		item.id = newItem.id;
+		// item.id = newItem.id;  //id cannot change, otherwise react will render new DOM elements
 		item.c1 = newItem.c1;
 		item.c2 = newItem.c2;
 		item.c3 = newItem.c3;

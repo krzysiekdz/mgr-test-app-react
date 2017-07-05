@@ -13,6 +13,7 @@ export default class ContentTable extends React.Component {
 			items.push(<Item 
 				item={item} 
 				key= {item.id}
+				id={item.id}
 			/>);
 		});
 		return items;
