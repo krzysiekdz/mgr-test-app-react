@@ -42,5 +42,12 @@ export default class AddService {
 		return this.model.data;
 	}
 
+	clear() {
+		this.model.data = [];
+		this.r.resetId();
+
+		return [];
+	}
+
 
 }

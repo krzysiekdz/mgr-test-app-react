@@ -22356,6 +22356,11 @@ var App = function (_React$Component) {
 			this.setState({ data: this.addService.addLast(count) });
 		}
 	}, {
+		key: 'clear',
+		value: function clear() {
+			this.setState({ data: this.addService.clear() });
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var data = this.state.data;
@@ -22368,7 +22373,8 @@ var App = function (_React$Component) {
 					init: this.initElements.bind(this),
 					addFirst: this.addFirst.bind(this),
 					addMid: this.addMid.bind(this),
-					addLast: this.addLast.bind(this)
+					addLast: this.addLast.bind(this),
+					clear: this.clear.bind(this)
 				}),
 				_react2.default.createElement(_ContentTable2.default, { items: data })
 			);
@@ -22626,7 +22632,8 @@ var Menu = function (_React$Component) {
 			    init = _props.init,
 			    addFirst = _props.addFirst,
 			    addMid = _props.addMid,
-			    addLast = _props.addLast;
+			    addLast = _props.addLast,
+			    clear = _props.clear;
 
 			return _react2.default.createElement(
 				'div',
@@ -22634,7 +22641,7 @@ var Menu = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(_Header2.default, { title: 'ReactJS' }),
+					_react2.default.createElement(_Header2.default, { title: 'ReactJS', clear: clear }),
 					_react2.default.createElement(_Init2.default, { init: init }),
 					_react2.default.createElement(_Add2.default, { addFirst: addFirst, addMid: addMid, addLast: addLast })
 				)
@@ -22682,6 +22689,11 @@ var Header = function (_React$Component) {
 	}
 
 	_createClass(Header, [{
+		key: "clear",
+		value: function clear() {
+			this.props.clear();
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var title = this.props.title;
@@ -22696,7 +22708,7 @@ var Header = function (_React$Component) {
 				),
 				_react2.default.createElement(
 					"button",
-					{ className: "btn btn-default btn-clear", name: "clear" },
+					{ className: "btn btn-default btn-clear", name: "clear", onClick: this.clear.bind(this) },
 					"clear"
 				)
 			);
@@ -22935,6 +22947,14 @@ var AddService = function () {
 			this.model.data = this.model.data.concat(newData);
 
 			return this.model.data;
+		}
+	}, {
+		key: 'clear',
+		value: function clear() {
+			this.model.data = [];
+			this.r.resetId();
+
+			return [];
 		}
 	}]);
 

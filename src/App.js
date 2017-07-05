@@ -30,6 +30,10 @@ export default class App extends React.Component {
 		this.setState({data: this.addService.addLast(count)});
 	}
 
+	clear() {
+		this.setState({data: this.addService.clear()});
+	}
+
 	render() {
 		const {data} = this.state;
 		// console.log('render: App');
@@ -40,6 +44,7 @@ export default class App extends React.Component {
 		    		addFirst={this.addFirst.bind(this)}
 		    		addMid={this.addMid.bind(this)}
 		    		addLast={this.addLast.bind(this)}
+		    		clear={this.clear.bind(this)}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>
