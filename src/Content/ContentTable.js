@@ -20,7 +20,7 @@ export default class ContentTable extends React.Component {
 
 
 	render() {
-		// console.log('render: ContentTable');
+		console.log('render: ContentTable');
 		return (
 			<div className="content">
 		    	<table className="table" name="tableWrap">
