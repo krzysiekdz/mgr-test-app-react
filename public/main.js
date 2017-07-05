@@ -22569,8 +22569,8 @@ var App = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var data = this.state.data;
-			// console.log('render: App');
 
+			console.log('render: App');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'app' },
@@ -22865,7 +22865,8 @@ var Menu = function (_React$Component) {
 			    replaceLast = _props.replaceLast,
 			    updateFirst = _props.updateFirst,
 			    updateMid = _props.updateMid,
-			    updateLast = _props.updateLast;
+			    updateLast = _props.updateLast,
+			    partialUpdate = _props.partialUpdate;
 
 			return _react2.default.createElement(
 				'div',
@@ -22877,7 +22878,7 @@ var Menu = function (_React$Component) {
 					_react2.default.createElement(_Init2.default, { init: init }),
 					_react2.default.createElement(_Add2.default, { addFirst: addFirst, addMid: addMid, addLast: addLast }),
 					_react2.default.createElement(_Replace2.default, { replaceFirst: replaceFirst, replaceMid: replaceMid, replaceLast: replaceLast }),
-					_react2.default.createElement(_Update2.default, { updateFirst: updateFirst, updateMid: updateMid, updateLast: updateLast })
+					_react2.default.createElement(_Update2.default, { updateFirst: updateFirst, updateMid: updateMid, updateLast: updateLast, partialUpdate: partialUpdate })
 				)
 			);
 		}
@@ -23234,69 +23235,69 @@ var Update = function (_React$Component) {
 	}
 
 	_createClass(Update, [{
-		key: "updateFirst",
+		key: 'updateFirst',
 		value: function updateFirst() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateFirst(count);
 		}
 	}, {
-		key: "updateMid",
+		key: 'updateMid',
 		value: function updateMid() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateMid(count);
 		}
 	}, {
-		key: "updateLast",
+		key: 'updateLast',
 		value: function updateLast() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateLast(count);
 		}
 	}, {
-		key: "partialUpdate",
+		key: 'partialUpdate',
 		value: function partialUpdate() {
 			var every = this.refs.inputUpdateEvery.value;
 			this.props.partialUpdate(every);
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
-
+			console.log('render: Update');
 			return _react2.default.createElement(
-				"div",
-				{ className: "container-action" },
+				'div',
+				{ className: 'container-action' },
 				_react2.default.createElement(
-					"button",
-					{ className: "btn btn-default btn-menu", name: "updateFirst", onClick: this.updateFirst.bind(this) },
-					"update I"
+					'button',
+					{ className: 'btn btn-default btn-menu', name: 'updateFirst', onClick: this.updateFirst.bind(this) },
+					'update I'
 				),
 				_react2.default.createElement(
-					"button",
-					{ className: "btn btn-default btn-menu", name: "updateMid", onClick: this.updateMid.bind(this) },
-					"update II"
+					'button',
+					{ className: 'btn btn-default btn-menu', name: 'updateMid', onClick: this.updateMid.bind(this) },
+					'update II'
 				),
 				_react2.default.createElement(
-					"button",
-					{ className: "btn btn-default btn-menu", name: "updateLast", onClick: this.updateLast.bind(this) },
-					"update III"
+					'button',
+					{ className: 'btn btn-default btn-menu', name: 'updateLast', onClick: this.updateLast.bind(this) },
+					'update III'
 				),
 				_react2.default.createElement(
-					"div",
-					{ className: "menu-block" },
-					"update:",
-					_react2.default.createElement("input", { type: "text", className: "form-control input150", value: "", name: "input-update", ref: "inputUpdate" }),
-					"elements"
+					'div',
+					{ className: 'menu-block' },
+					'update:',
+					_react2.default.createElement('input', { type: 'text', className: 'form-control input150', name: 'input-update', ref: 'inputUpdate' }),
+					'elements'
 				),
 				_react2.default.createElement(
-					"div",
+					'div',
 					null,
 					_react2.default.createElement(
-						"button",
-						{ className: "btn btn-default btn-menu", name: "updateEvery", onClick: this.partialUpdate.bind(this) },
-						"update"
+						'button',
+						{ className: 'btn btn-default btn-menu', name: 'updateEvery', onClick: this.partialUpdate.bind(this) },
+						'update'
 					),
-					"every",
-					_react2.default.createElement("input", { type: "text", className: "form-control input50", value: "", name: "input-update-every", ref: "inputUpdateEvery" }),
-					"th element"
+					'every',
+					_react2.default.createElement('input', { type: 'text', className: 'form-control input50', name: 'input-update-every', ref: 'inputUpdateEvery' }),
+					'th element'
 				)
 			);
 		}

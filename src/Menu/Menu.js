@@ -15,7 +15,7 @@ export default class Menu extends React.Component {
 	render() {
 		const {init, addFirst, addMid, addLast, clear,
 			replaceFirst, replaceMid, replaceLast ,
-			updateFirst, updateMid, updateLast,
+			updateFirst, updateMid, updateLast, partialUpdate,
 			} = this.props;
 		return (
 			<div className="menu">
@@ -24,7 +24,7 @@ export default class Menu extends React.Component {
 		    		<Init init={init} />
 		    		<Add addFirst={addFirst} addMid={addMid} addLast={addLast} />
 		    		<Replace replaceFirst={replaceFirst} replaceMid={replaceMid} replaceLast={replaceLast} />
-		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} />
+		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} partialUpdate={partialUpdate} />
 		    	</div>
 		     </div>
 		);

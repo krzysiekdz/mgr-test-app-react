@@ -29,7 +29,7 @@ export default class Update extends React.Component {
 
 
 	render() {
-
+		console.log('render: Update');
 		return (
 			<div className="container-action">
 			    <button className="btn btn-default btn-menu" name="updateFirst" onClick={this.updateFirst.bind(this)} >           
@@ -43,7 +43,7 @@ export default class Update extends React.Component {
 			    </button>
 			    <div className="menu-block">
 			        update: 
-			        <input type="text" className="form-control input150" value="" name="input-update" ref="inputUpdate" /> 
+			        <input type="text" className="form-control input150"  name="input-update" ref="inputUpdate" /> 
 			        elements
 			    </div>
 
@@ -52,7 +52,7 @@ export default class Update extends React.Component {
 			        	update
 			        </button>
 			        every
-			        <input type="text" className="form-control input50" value="" name="input-update-every" ref="inputUpdateEvery" />
+			        <input type="text" className="form-control input50"  name="input-update-every" ref="inputUpdateEvery" />
 			        th element
 			    </div>
 			</div>
