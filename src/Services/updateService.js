@@ -81,4 +81,22 @@ export default class UpdateService {
 		return this.model.data.slice();
 	}
 
+	editFirstEl(text) {
+		var data = this.model.data, 
+			first = this.model.data[0];
+		if(data.length > 0) {
+			var newData = {
+				id: first.id,
+				c1: text,
+				c2: first.c2,
+				c3: first.c3,
+				c4: first.c4
+			};
+			this.model.data[0] = newData;
+		}
+
+		return data.slice();
+		
+	}
+
 }
