@@ -22505,8 +22505,8 @@ var App = function (_React$Component) {
 		_this.swapService = new _swapService2.default();
 
 		_this.state = {
-			data: [],
-			inputProp: ''
+			data: []
+			// inputProp: '',
 		};
 		return _this;
 	}
@@ -22586,11 +22586,11 @@ var App = function (_React$Component) {
 		value: function swapLast() {
 			this.setState({ data: this.swapService.swapLast() });
 		}
-	}, {
-		key: 'inputAction',
-		value: function inputAction(text) {
-			this.setState({ inputProp: text });
-		}
+
+		// inputAction(text) {
+		// 	this.setState({inputProp: text });
+		// }
+
 	}, {
 		key: 'render',
 		value: function render() {
@@ -22617,9 +22617,9 @@ var App = function (_React$Component) {
 					partialUpdate: this.partialUpdate.bind(this),
 					swapFirst: this.swapFirst.bind(this),
 					swapMid: this.swapMid.bind(this),
-					swapLast: this.swapLast.bind(this),
-					inputProp: inputProp,
-					inputAction: this.inputAction.bind(this)
+					swapLast: this.swapLast.bind(this)
+					// inputProp={inputProp}
+					// inputAction={this.inputAction.bind(this)}
 				}),
 				_react2.default.createElement(_ContentTable2.default, { items: data })
 			);
@@ -23140,7 +23140,6 @@ var Add = function (_React$Component) {
 	_createClass(Add, [{
 		key: 'shouldComponentUpdate',
 		value: function shouldComponentUpdate(props) {
-			// console.log(props.addFirst, this.props.addFirst);
 			if (props.addFirst.toString() !== this.props.addFirst.toString()) {
 				return true;
 			} else {
@@ -23512,18 +23511,30 @@ var Input = function (_React$Component) {
 	function Input() {
 		_classCallCheck(this, Input);
 
-		return _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
+		var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this));
+
+		_this.state = {
+			inputProp: ''
+		};
+		return _this;
 	}
 
 	_createClass(Input, [{
 		key: 'handleInput',
 		value: function handleInput(e) {
-			this.props.inputAction(e.target.value);
+			// this.props.inputAction(e.target.value);
+			this.setState({ inputProp: e.target.value });
 		}
 	}, {
 		key: 'shouldComponentUpdate',
-		value: function shouldComponentUpdate(props) {
-			if (props.inputProp !== this.props.inputProp) {
+		value: function shouldComponentUpdate(props, state) {
+			// if(props.inputProp !== this.props.inputProp) {
+			// 	return true;
+			// } else {
+			// 	return false;
+			// }
+
+			if (state.inputProp !== this.state.inputProp) {
 				return true;
 			} else {
 				return false;
@@ -23532,7 +23543,7 @@ var Input = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var inputProp = this.props.inputProp;
+			var inputProp = this.state.inputProp;
 
 			console.log('render: input component');
 			return _react2.default.createElement(

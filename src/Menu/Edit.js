@@ -5,24 +5,14 @@ export default class Input extends React.Component {
 
 	constructor() {
 		super();
-		this.state = {
-			inputProp: ''
-		}
 	}	
 
 	handleInput(e) {
-		// this.props.inputAction(e.target.value);
-		this.setState({inputProp: e.target.value});
+		this.props.inputAction(e.target.value);
 	}
 
-	shouldComponentUpdate(props, state) {
-		// if(props.inputProp !== this.props.inputProp) {
-		// 	return true;
-		// } else {
-		// 	return false;
-		// }
-
-		if(state.inputProp !== this.state.inputProp) {
+	shouldComponentUpdate(props) {
+		if(props.inputProp !== this.props.inputProp) {
 			return true;
 		} else {
 			return false;
@@ -30,7 +20,7 @@ export default class Input extends React.Component {
 	}
 
 	render() {
-		const {inputProp} = this.state;
+		const {inputProp} = this.props;
 		console.log('render: input component');
 		return (
 			<div>

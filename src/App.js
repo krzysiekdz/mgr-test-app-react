@@ -18,7 +18,7 @@ export default class App extends React.Component {
 
 		this.state = {
 			data: [],
-			inputProp: '',
+			// inputProp: '',
 		};
 	}	
 
@@ -82,9 +82,9 @@ export default class App extends React.Component {
 		this.setState({data: this.swapService.swapLast()});
 	}
 
-	inputAction(text) {
-		this.setState({inputProp: text });
-	}
+	// inputAction(text) {
+	// 	this.setState({inputProp: text });
+	// }
 
 	render() {
 		const {data, inputProp} = this.state;
@@ -107,8 +107,8 @@ export default class App extends React.Component {
 		    		swapFirst={this.swapFirst.bind(this)}
 		    		swapMid={this.swapMid.bind(this)}
 		    		swapLast={this.swapLast.bind(this)}
-		    		inputProp={inputProp}
-		    		inputAction={this.inputAction.bind(this)}
+		    		// inputProp={inputProp}
+		    		// inputAction={this.inputAction.bind(this)}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>
