@@ -9,7 +9,7 @@ export default class ContentTable extends React.Component {
 
 	renderItems() {
 		var items = []; //tu beda umieszczane komponenty wirtualne
-		this.props.items.forEach(item => {
+		this.props.items.forEach((item, i) => {
 			items.push(<Item 
 				item={item} 
 				key= {item.id}
@@ -20,10 +20,10 @@ export default class ContentTable extends React.Component {
 		return items;
 	}
 
-	shouldComponentUpdate(props, state) { //moge sprawdzic cala tablice tutaj, albo w metodach shouldCompoUdpt dla Item; tutaj nie oplaca sie sprawdzac, lepiej zrobic to w metodzie Item
-		// console.log('should update table', props, state);
-		return true;
-	}
+	// shouldComponentUpdate(props, state) { //moge sprawdzic cala tablice tutaj, albo w metodach shouldCompoUdpt dla Item; tutaj nie oplaca sie sprawdzac, lepiej zrobic to w metodzie Item
+	// 	// console.log('should update table', props, state);
+	// 	return true;
+	// }
 
 
 	render() {

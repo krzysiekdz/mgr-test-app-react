@@ -4,6 +4,7 @@ import Init from './Init';
 import Add from './Add';
 import Replace from './Replace';
 import Update from './Update';
+import Swap from './Swap';
 
 export default class Menu extends React.Component {
 
@@ -16,6 +17,7 @@ export default class Menu extends React.Component {
 		const {init, addFirst, addMid, addLast, clear,
 			replaceFirst, replaceMid, replaceLast ,
 			updateFirst, updateMid, updateLast, partialUpdate,
+			swapFirst, swapMid, swapLast,
 			} = this.props;
 		return (
 			<div className="menu">
@@ -25,6 +27,7 @@ export default class Menu extends React.Component {
 		    		<Add addFirst={addFirst} addMid={addMid} addLast={addLast} />
 		    		<Replace replaceFirst={replaceFirst} replaceMid={replaceMid} replaceLast={replaceLast} />
 		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} partialUpdate={partialUpdate} />
+		    		<Swap swapFirst={swapFirst} swapMid={swapMid} swapLast={swapLast} />
 		    	</div>
 		     </div>
 		);

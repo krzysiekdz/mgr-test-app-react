@@ -15,6 +15,8 @@ export default class SwapService {
 			var j = 1;
 			this.swap(i, j);
 		}
+
+		return this.model.data.slice();
 	}
 
 	swapMid() {
@@ -24,6 +26,8 @@ export default class SwapService {
 			var j = i+1;
 			this.swap(i, j);
 		}
+
+		return this.model.data.slice();
 	}
 
 	swapLast() {
@@ -33,6 +37,8 @@ export default class SwapService {
 			var j = i+1;
 			this.swap(i, j);
 		}
+
+		return this.model.data.slice();
 	}
 
 	swap(i, j) {

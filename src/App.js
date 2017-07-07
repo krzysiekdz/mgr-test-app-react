@@ -4,6 +4,7 @@ import Menu from './Menu/Menu';
 import AddService from './Services/addService';
 import ReplaceService from './Services/replaceService';
 import UpdateService from './Services/updateService';
+import SwapService from './Services/swapService';
 
 export default class App extends React.Component {
 
@@ -12,6 +13,7 @@ export default class App extends React.Component {
 		this.addService = new AddService();
 		this.replaceService = new ReplaceService();
 		this.updateService = new UpdateService();
+		this.swapService = new SwapService();
 
 		this.state = {
 			data: []
@@ -66,6 +68,18 @@ export default class App extends React.Component {
 		this.setState({data: this.updateService.partialUpdate(every)});
 	}
 
+	swapFirst() {
+		this.setState({data: this.swapService.swapFirst()});
+	}
+
+	swapMid() {
+		this.setState({data: this.swapService.swapMid()});
+	}
+
+	swapLast() {
+		this.setState({data: this.swapService.swapLast()});
+	}
+
 	render() {
 		const {data} = this.state;
 		// console.log('render: App');
@@ -84,6 +98,9 @@ export default class App extends React.Component {
 		    		updateMid={this.updateMid.bind(this)}
 		    		updateLast={this.updateLast.bind(this)}
 		    		partialUpdate={this.partialUpdate.bind(this)}
+		    		swapFirst={this.swapFirst.bind(this)}
+		    		swapMid={this.swapMid.bind(this)}
+		    		swapLast={this.swapLast.bind(this)}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>
