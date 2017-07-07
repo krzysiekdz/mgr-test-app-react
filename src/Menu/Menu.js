@@ -5,6 +5,7 @@ import Add from './Add';
 import Replace from './Replace';
 import Update from './Update';
 import Swap from './Swap';
+import Input from './Input';
 
 export default class Menu extends React.Component {
 
@@ -18,6 +19,7 @@ export default class Menu extends React.Component {
 			replaceFirst, replaceMid, replaceLast ,
 			updateFirst, updateMid, updateLast, partialUpdate,
 			swapFirst, swapMid, swapLast,
+			inputProp, inputAction,
 			} = this.props;
 		return (
 			<div className="menu">
@@ -28,6 +30,7 @@ export default class Menu extends React.Component {
 		    		<Replace replaceFirst={replaceFirst} replaceMid={replaceMid} replaceLast={replaceLast} />
 		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} partialUpdate={partialUpdate} />
 		    		<Swap swapFirst={swapFirst} swapMid={swapMid} swapLast={swapLast} />
+		    		<Input inputProp={inputProp} inputAction={inputAction} />
 		    	</div>
 		     </div>
 		);

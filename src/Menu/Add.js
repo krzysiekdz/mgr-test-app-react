@@ -7,6 +7,14 @@ export default class Add extends React.Component {
 		super();
 	}	
 
+	shouldComponentUpdate(props) {
+		if(props.addFirst.toString() !== this.props.addFirst.toString()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	addFirst() {
 		const count = this.refs.inputAdd.value;
 		this.props.addFirst(count);
@@ -24,7 +32,7 @@ export default class Add extends React.Component {
 
 
 	render() {
-
+		console.log('render: add component');
 		return (
 			 <div className="container-action">
 			    <button className="btn btn-default btn-menu" name="addFirst" onClick={this.addFirst.bind(this)} >

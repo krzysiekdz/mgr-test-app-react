@@ -6,6 +6,7 @@ import ReplaceService from './Services/replaceService';
 import UpdateService from './Services/updateService';
 import SwapService from './Services/swapService';
 
+
 export default class App extends React.Component {
 
 	constructor() {
@@ -16,7 +17,8 @@ export default class App extends React.Component {
 		this.swapService = new SwapService();
 
 		this.state = {
-			data: []
+			data: [],
+			inputProp: '',
 		};
 	}	
 
@@ -80,8 +82,12 @@ export default class App extends React.Component {
 		this.setState({data: this.swapService.swapLast()});
 	}
 
+	inputAction(text) {
+		this.setState({inputProp: text });
+	}
+
 	render() {
-		const {data} = this.state;
+		const {data, inputProp} = this.state;
 		// console.log('render: App');
 		return (
 			<div className="app">
@@ -101,6 +107,8 @@ export default class App extends React.Component {
 		    		swapFirst={this.swapFirst.bind(this)}
 		    		swapMid={this.swapMid.bind(this)}
 		    		swapLast={this.swapLast.bind(this)}
+		    		inputProp={inputProp}
+		    		inputAction={this.inputAction.bind(this)}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>
