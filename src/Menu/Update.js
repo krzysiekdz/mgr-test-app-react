@@ -29,7 +29,7 @@ export default class Update extends React.Component {
 
 
 	render() {
-		console.log('render: Update');
+		// console.log('render: Update');
 		return (
 			<div className="container-action">
 			    <button className="btn btn-default btn-menu" name="updateFirst" onClick={this.updateFirst.bind(this)} >           

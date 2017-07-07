@@ -22569,8 +22569,8 @@ var App = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var data = this.state.data;
+			// console.log('render: App');
 
-			console.log('render: App');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'app' },
@@ -22639,7 +22639,7 @@ var ContentTable = function (_React$Component) {
 	_createClass(ContentTable, [{
 		key: 'renderItems',
 		value: function renderItems() {
-			var items = [];
+			var items = []; //tu beda umieszczane komponenty wirtualne
 			this.props.items.forEach(function (item) {
 				items.push(_react2.default.createElement(_Item2.default, {
 					item: item,
@@ -22647,12 +22647,20 @@ var ContentTable = function (_React$Component) {
 					id: item.id
 				}));
 			});
+			// console.log('virtual items:', items);
 			return items;
+		}
+	}, {
+		key: 'shouldComponentUpdate',
+		value: function shouldComponentUpdate(props, state) {
+			//moge sprawdzic cala tablice tutaj, albo w metodach shouldCompoUdpt dla Item; tutaj nie oplaca sie sprawdzac, lepiej zrobic to w metodzie Item
+			// console.log('should update table', props, state);
+			return true;
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			// console.log('render: ContentTable');
+			console.log('render: ContentTable');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'content' },
@@ -22741,16 +22749,43 @@ var Item = function (_React$Component) {
         return _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this));
     }
 
+    // componentDidMount() {
+    //     console.log('component did mount', this.props.id);    
+    // }
+
+    // componentWillReceiveProps() {
+    //     console.log('component will receive props', this.props.id);    
+    // }
+
     _createClass(Item, [{
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            console.log('unmounting: ', this.props.id);
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps, nextState) {
+            //jesli zwracamy true, oznacza to, ze komponent rzeczywisty nalezy zrenderowac ponownie (przy pomocy render) i porównac jego drzewo ze starym drzewem
+            // console.log('should component update', this.props.id);
+            // console.log('should update:', this.props.id, nextProps, nextState);
+
+            if (nextProps.item !== this.props.item) return true;else return false;
         }
+
+        // componentWillUpdate() {
+        //     console.log('component will update', this.props.id);
+        // }
+
+        // componentDidUpdate() {
+        //     console.log('component did update', this.props.id);
+        // }
+
+        // componentWillUnmount() {
+        //     console.log('unmounting: ', this.props.id);
+        // }
+
+
     }, {
         key: 'render',
         value: function render() {
             var item = this.props.item;
 
+            console.log('render item:', this.props.id);
             return _react2.default.createElement(
                 'tr',
                 null,
@@ -23235,69 +23270,69 @@ var Update = function (_React$Component) {
 	}
 
 	_createClass(Update, [{
-		key: 'updateFirst',
+		key: "updateFirst",
 		value: function updateFirst() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateFirst(count);
 		}
 	}, {
-		key: 'updateMid',
+		key: "updateMid",
 		value: function updateMid() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateMid(count);
 		}
 	}, {
-		key: 'updateLast',
+		key: "updateLast",
 		value: function updateLast() {
 			var count = this.refs.inputUpdate.value;
 			this.props.updateLast(count);
 		}
 	}, {
-		key: 'partialUpdate',
+		key: "partialUpdate",
 		value: function partialUpdate() {
 			var every = this.refs.inputUpdateEvery.value;
 			this.props.partialUpdate(every);
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
-			console.log('render: Update');
+			// console.log('render: Update');
 			return _react2.default.createElement(
-				'div',
-				{ className: 'container-action' },
+				"div",
+				{ className: "container-action" },
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'updateFirst', onClick: this.updateFirst.bind(this) },
-					'update I'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "updateFirst", onClick: this.updateFirst.bind(this) },
+					"update I"
 				),
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'updateMid', onClick: this.updateMid.bind(this) },
-					'update II'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "updateMid", onClick: this.updateMid.bind(this) },
+					"update II"
 				),
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'updateLast', onClick: this.updateLast.bind(this) },
-					'update III'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "updateLast", onClick: this.updateLast.bind(this) },
+					"update III"
 				),
 				_react2.default.createElement(
-					'div',
-					{ className: 'menu-block' },
-					'update:',
-					_react2.default.createElement('input', { type: 'text', className: 'form-control input150', name: 'input-update', ref: 'inputUpdate' }),
-					'elements'
+					"div",
+					{ className: "menu-block" },
+					"update:",
+					_react2.default.createElement("input", { type: "text", className: "form-control input150", name: "input-update", ref: "inputUpdate" }),
+					"elements"
 				),
 				_react2.default.createElement(
-					'div',
+					"div",
 					null,
 					_react2.default.createElement(
-						'button',
-						{ className: 'btn btn-default btn-menu', name: 'updateEvery', onClick: this.partialUpdate.bind(this) },
-						'update'
+						"button",
+						{ className: "btn btn-default btn-menu", name: "updateEvery", onClick: this.partialUpdate.bind(this) },
+						"update"
 					),
-					'every',
-					_react2.default.createElement('input', { type: 'text', className: 'form-control input50', name: 'input-update-every', ref: 'inputUpdateEvery' }),
-					'th element'
+					"every",
+					_react2.default.createElement("input", { type: "text", className: "form-control input50", name: "input-update-every", ref: "inputUpdateEvery" }),
+					"th element"
 				)
 			);
 		}
@@ -23541,7 +23576,9 @@ var UpdateService = function () {
 			if (data.length >= c) {
 				var newData = this.r.randomObjects(c);
 				for (var i = 0; i < c; i++) {
-					this.update(data[i], newData[i]);
+					var id = data[i].id;
+					data[i] = newData[i];
+					data[i].id = id;
 				}
 			}
 
@@ -23558,7 +23595,9 @@ var UpdateService = function () {
 				var start = Math.floor(data.length / 2) - Math.floor(c / 2);
 				var end = start + c;
 				for (var i = start, j = 0; i < end; i++, j++) {
-					this.update(data[i], newData[j]);
+					var id = data[i].id;
+					data[i] = newData[j];
+					data[i].id = id;
 				}
 			}
 
@@ -23575,7 +23614,9 @@ var UpdateService = function () {
 				var start = data.length - c;
 				var end = start + c;
 				for (var i = start, j = 0; i < end; i++, j++) {
-					this.update(data[i], newData[j]);
+					var id = data[i].id;
+					data[i] = newData[j];
+					data[i].id = id;
 				}
 			}
 
@@ -23590,20 +23631,13 @@ var UpdateService = function () {
 			if (data.length > 0) {
 				var newData = this.r.randomObjects(count);
 				for (var i = 0, j = 0; i < data.length; i += e, j++) {
-					this.update(data[i], newData[j]);
+					var id = data[i].id;
+					data[i] = newData[j];
+					data[i].id = id;
 				}
 			}
 
 			return this.model.data.slice();
-		}
-	}, {
-		key: 'update',
-		value: function update(item, newItem) {
-			// item.id = newItem.id;  //id cannot change, otherwise react will render new DOM elements
-			item.c1 = newItem.c1;
-			item.c2 = newItem.c2;
-			item.c3 = newItem.c3;
-			item.c4 = newItem.c4;
 		}
 	}]);
 

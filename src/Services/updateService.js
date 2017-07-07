@@ -19,7 +19,9 @@ export default class UpdateService {
 		if(data.length >= c) {
 			var newData = this.r.randomObjects(c);	
 			for(var i = 0; i < c; i++) {
-				this.update(data[i], newData[i]);
+				var id = data[i].id
+				data[i] = newData[i];
+				data[i].id = id;
 			}
 		}
 		
@@ -35,7 +37,9 @@ export default class UpdateService {
 			var start = Math.floor(data.length / 2) - Math.floor(c/2);
 			var end = start + c;
 			for(var i = start, j = 0; i < end; i++, j++) {
-				this.update(data[i], newData[j]);
+				var id = data[i].id
+				data[i] = newData[j];
+				data[i].id = id;
 			}
 		}
 
@@ -52,7 +56,9 @@ export default class UpdateService {
 			var start = data.length - c;
 			var end = start + c;
 			for(var i = start, j = 0; i < end; i++, j++) {
-				this.update(data[i], newData[j]);
+				var id = data[i].id
+				data[i] = newData[j];
+				data[i].id = id;
 			}
 		}
 
@@ -66,19 +72,13 @@ export default class UpdateService {
 		if(data.length > 0) {
 			var newData = this.r.randomObjects(count);
 			for(var i = 0, j = 0; i < data.length; i+=e, j++) {
-				this.update(data[i], newData[j]);
+				var id = data[i].id
+				data[i] = newData[j];
+				data[i].id = id;
 			}
 		} 
 
 		return this.model.data.slice();
-	}
-
-	update(item, newItem) {
-		// item.id = newItem.id;  //id cannot change, otherwise react will render new DOM elements
-		item.c1 = newItem.c1;
-		item.c2 = newItem.c2;
-		item.c3 = newItem.c3;
-		item.c4 = newItem.c4;
 	}
 
 }
