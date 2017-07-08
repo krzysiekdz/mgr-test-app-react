@@ -6,6 +6,7 @@ import ReplaceService from './Services/replaceService';
 import UpdateService from './Services/updateService';
 import SwapService from './Services/swapService';
 import FilterService from './Services/filterService';
+import SearchService from './Services/searchService';
 
 
 export default class App extends React.Component {
@@ -17,11 +18,13 @@ export default class App extends React.Component {
 		this.updateService = new UpdateService();
 		this.swapService = new SwapService();
 		this.filterService = new FilterService();
+		this.searchService = new SearchService();
 
 		this.state = {
 			data: [],
 			editProp: '',
 			filterChecked: false,
+			searchText: '',
 		};
 	}	
 
@@ -100,8 +103,13 @@ export default class App extends React.Component {
 		}
 	}
 
+	searchAction(text) {
+		this.setState({data: this.searchService.search(text),
+			searchText: text });
+	}
+
 	render() {
-		const {data, editProp, filterChecked} = this.state;
+		const {data, editProp, filterChecked, searchText} = this.state;
 		// console.log('render: App');
 		return (
 			<div className="app">
@@ -125,6 +133,8 @@ export default class App extends React.Component {
 		    		editProp={editProp}
 		    		filterChecked={filterChecked}
 		    		filterItems={this.filterItems.bind(this)}
+		    		searchText={searchText}
+		    		searchAction={this.searchAction.bind(this)}
 		    	></Menu>
 		        <ContentTable 
 		        	items={data} 

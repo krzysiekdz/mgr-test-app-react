@@ -37,27 +37,32 @@ export default class Item extends React.Component {
     //     console.log('unmounting: ', this.props.id);
     // }
    
+    isSearchPass(search, i) {
+        return search && search[i];
+    }
 
 	render() {
 		const {item} = this.props;
         console.log('render item:', this.props.id);
 
         const visibility = item.hidden ? 'visible-off':'';
+        const s = item.search;
+        console.log(s);
 		return (
 			<tr className={visibility} >
 				<td className="col-md-1"  >
                     {item.id}
                 </td>
-                <td className="col-md-2" >
+                <td className={"col-md-2 " + (this.isSearchPass(s, 0)? ' search-selected ':'')} >
                     {item.c1}
                 </td>
-                <td className="col-md-2"  >
+                <td className={"col-md-2 " + (this.isSearchPass(s, 1)? ' search-selected ':'')}  >
                     {item.c2}
                 </td>
-                <td className="col-md-2"  >
+                <td className={"col-md-2 " + (this.isSearchPass(s, 2)? ' search-selected ':'')}  >
                     {item.c3}
                 </td>
-                <td className="col-md-2" >
+                <td className={"col-md-2 " + (this.isSearchPass(s, 3)? ' search-selected ':'')} >
                     {item.c4}
                 </td>
                 <td>
