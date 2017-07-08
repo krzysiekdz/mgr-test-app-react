@@ -41,8 +41,10 @@ export default class Item extends React.Component {
 	render() {
 		const {item} = this.props;
         console.log('render item:', this.props.id);
+
+        const visibility = item.hidden ? 'visible-off':'';
 		return (
-			<tr>
+			<tr className={visibility} >
 				<td className="col-md-1"  >
                     {item.id}
                 </td>

@@ -7,6 +7,7 @@ import Update from './Update';
 import Swap from './Swap';
 import Input from './Input';
 import Edit from './Edit';
+import Filter from './Filter';
 
 export default class Menu extends React.Component {
 
@@ -21,6 +22,7 @@ export default class Menu extends React.Component {
 			updateFirst, updateMid, updateLast, partialUpdate,
 			swapFirst, swapMid, swapLast,
 			editAction, editProp,
+			filterChecked, filterItems,
 			} = this.props;
 		return (
 			<div className="menu">
@@ -33,6 +35,7 @@ export default class Menu extends React.Component {
 		    		<Swap swapFirst={swapFirst} swapMid={swapMid} swapLast={swapLast} />
 		    		<Input />
 		    		<Edit editAction={editAction} editProp={editProp} />
+		    		<Filter filterChecked={filterChecked} filterItems={filterItems} />
 		    	</div>
 		     </div>
 		);

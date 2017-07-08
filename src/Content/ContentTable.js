@@ -20,14 +20,20 @@ export default class ContentTable extends React.Component {
 		return items;
 	}
 
-	// shouldComponentUpdate(props, state) { //moge sprawdzic cala tablice tutaj, albo w metodach shouldCompoUdpt dla Item; tutaj nie oplaca sie sprawdzac, lepiej zrobic to w metodzie Item
-	// 	// console.log('should update table', props, state);
-	// 	return true;
-	// }
+	shouldComponentUpdate(nextProps, state) { //jesli tablica z danymi items jest inna to dopiero wtedy robimy render
+		if(nextProps.items !== this.props.items || 
+				this.props.filterChecked !== nextProps.filterChecked)
+			return true;
+		else 
+			return false;
+	}
 
 
 	render() {
+		const {filterChecked} = this.props;
 		console.log('render: ContentTable');
+
+		const filteredClass = filterChecked ? 'filtered' : '';
 		return (
 			<div className="content">
 		    	<table className="table" name="tableWrap">
@@ -42,7 +48,7 @@ export default class ContentTable extends React.Component {
 			            </tr>
 			        </thead>
 
-			        <tbody name="table" >
+			        <tbody name="table" className={filteredClass} >
 			        	{this.renderItems()}
 			        </tbody>
 

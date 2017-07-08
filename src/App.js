@@ -5,6 +5,7 @@ import AddService from './Services/addService';
 import ReplaceService from './Services/replaceService';
 import UpdateService from './Services/updateService';
 import SwapService from './Services/swapService';
+import FilterService from './Services/filterService';
 
 
 export default class App extends React.Component {
@@ -15,10 +16,12 @@ export default class App extends React.Component {
 		this.replaceService = new ReplaceService();
 		this.updateService = new UpdateService();
 		this.swapService = new SwapService();
+		this.filterService = new FilterService();
 
 		this.state = {
 			data: [],
-			editProp: 'start',
+			editProp: '',
+			filterChecked: false,
 		};
 	}	
 
@@ -87,8 +90,18 @@ export default class App extends React.Component {
 			editProp: text });
 	}
 
+	filterItems() {
+		if(this.state.filterChecked) {
+			this.setState({filterChecked: false, 
+				data: this.filterService.unfilter() });
+		} else {
+			this.setState({filterChecked: true, 
+				data: this.filterService.filter() });
+		}
+	}
+
 	render() {
-		const {data, editProp} = this.state;
+		const {data, editProp, filterChecked} = this.state;
 		// console.log('render: App');
 		return (
 			<div className="app">
@@ -110,8 +123,13 @@ export default class App extends React.Component {
 		    		swapLast={this.swapLast.bind(this)}
 		    		editAction={this.editAction.bind(this)}
 		    		editProp={editProp}
+		    		filterChecked={filterChecked}
+		    		filterItems={this.filterItems.bind(this)}
 		    	></Menu>
-		        <ContentTable items={data} ></ContentTable> 
+		        <ContentTable 
+		        	items={data} 
+		        	filterChecked={filterChecked} 
+		        ></ContentTable> 
 		     </div>
 		);
 	}
