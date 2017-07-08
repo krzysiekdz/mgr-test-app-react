@@ -18,6 +18,7 @@ export default class App extends React.Component {
 
 		this.state = {
 			data: [],
+			editProp: 'start',
 		};
 	}	
 
@@ -82,11 +83,12 @@ export default class App extends React.Component {
 	}
 
 	editAction(text) {
-		this.setState({data: this.updateService.editFirstEl(text) });
+		this.setState({data: this.updateService.editFirstEl(text), 
+			editProp: text });
 	}
 
 	render() {
-		const {data, inputProp} = this.state;
+		const {data, editProp} = this.state;
 		// console.log('render: App');
 		return (
 			<div className="app">
@@ -107,6 +109,7 @@ export default class App extends React.Component {
 		    		swapMid={this.swapMid.bind(this)}
 		    		swapLast={this.swapLast.bind(this)}
 		    		editAction={this.editAction.bind(this)}
+		    		editProp={editProp}
 		    	></Menu>
 		        <ContentTable items={data} ></ContentTable> 
 		     </div>

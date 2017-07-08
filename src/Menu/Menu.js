@@ -20,7 +20,7 @@ export default class Menu extends React.Component {
 			replaceFirst, replaceMid, replaceLast ,
 			updateFirst, updateMid, updateLast, partialUpdate,
 			swapFirst, swapMid, swapLast,
-			editAction,
+			editAction, editProp,
 			} = this.props;
 		return (
 			<div className="menu">
@@ -32,7 +32,7 @@ export default class Menu extends React.Component {
 		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} partialUpdate={partialUpdate} />
 		    		<Swap swapFirst={swapFirst} swapMid={swapMid} swapLast={swapLast} />
 		    		<Input />
-		    		<Edit editAction={editAction} />
+		    		<Edit editAction={editAction} editProp={editProp} />
 		    	</div>
 		     </div>
 		);

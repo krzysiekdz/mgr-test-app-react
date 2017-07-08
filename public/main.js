@@ -22505,7 +22505,8 @@ var App = function (_React$Component) {
 		_this.swapService = new _swapService2.default();
 
 		_this.state = {
-			data: []
+			data: [],
+			editProp: 'start'
 		};
 		return _this;
 	}
@@ -22588,14 +22589,15 @@ var App = function (_React$Component) {
 	}, {
 		key: 'editAction',
 		value: function editAction(text) {
-			this.setState({ data: this.updateService.editFirstEl(text) });
+			this.setState({ data: this.updateService.editFirstEl(text),
+				editProp: text });
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var _state = this.state,
 			    data = _state.data,
-			    inputProp = _state.inputProp;
+			    editProp = _state.editProp;
 			// console.log('render: App');
 
 			return _react2.default.createElement(
@@ -22617,7 +22619,8 @@ var App = function (_React$Component) {
 					swapFirst: this.swapFirst.bind(this),
 					swapMid: this.swapMid.bind(this),
 					swapLast: this.swapLast.bind(this),
-					editAction: this.editAction.bind(this)
+					editAction: this.editAction.bind(this),
+					editProp: editProp
 				}),
 				_react2.default.createElement(_ContentTable2.default, { items: data })
 			);
@@ -22948,7 +22951,8 @@ var Menu = function (_React$Component) {
 			    swapFirst = _props.swapFirst,
 			    swapMid = _props.swapMid,
 			    swapLast = _props.swapLast,
-			    editAction = _props.editAction;
+			    editAction = _props.editAction,
+			    editProp = _props.editProp;
 
 			return _react2.default.createElement(
 				'div',
@@ -22963,7 +22967,7 @@ var Menu = function (_React$Component) {
 					_react2.default.createElement(_Update2.default, { updateFirst: updateFirst, updateMid: updateMid, updateLast: updateLast, partialUpdate: partialUpdate }),
 					_react2.default.createElement(_Swap2.default, { swapFirst: swapFirst, swapMid: swapMid, swapLast: swapLast }),
 					_react2.default.createElement(_Input2.default, null),
-					_react2.default.createElement(_Edit2.default, { editAction: editAction })
+					_react2.default.createElement(_Edit2.default, { editAction: editAction, editProp: editProp })
 				)
 			);
 		}
@@ -23615,19 +23619,27 @@ var Input = function (_React$Component) {
 			this.props.editAction(e.target.value);
 		}
 	}, {
+		key: 'handleClick',
+		value: function handleClick() {
+			this.props.editAction(this.props.editProp);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var editProp = this.props.editProp;
+
 			console.log('render: edit component');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'input-group' },
-				_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'edit...', name: 'input-edit', onChange: this.handleInput.bind(this) }),
+				_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'edit...', name: 'input-edit',
+					onChange: this.handleInput.bind(this), value: editProp }),
 				_react2.default.createElement(
 					'span',
 					{ className: 'input-group-btn' },
 					_react2.default.createElement(
 						'button',
-						{ className: 'btn btn-default', name: 'btn-edit' },
+						{ className: 'btn btn-default', name: 'btn-edit', onClick: this.handleClick.bind(this) },
 						'edit'
 					)
 				)
