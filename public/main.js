@@ -24375,20 +24375,33 @@ var searchService = function () {
 
 			for (var j = 0; j < data.length; j++) {
 				var item = data[j];
-				for (var i = 0; i < 4; i++) {
-					var prop = item[col[i]] + "";
-					if (txt !== "" && prop.indexOf(txt) !== -1) {
-						var copy = this.copyService.copy(item);
-						this.model.data[j] = copy;
+				var copied = false;
 
-						if (!copy.search) {
-							copy.search = [null, null, null, null];
+				for (var i = 0; i < 4; i++) {
+					//for props: c1,c2,c3,c4
+					var prop = item[col[i]] + "";
+
+					if (txt !== "" && prop.indexOf(txt) !== -1) {
+						if (!copied) {
+							//we need only one copy per object
+							item = this.copyService.copy(item);
+							this.model.data[j] = item;
+							copied = true;
 						}
-						copy.search[i] = txt;
+
+						if (!item.search) {
+							item.search = [null, null, null, null];
+						}
+						item.search[i] = txt;
 					} else if (item.search && item.search[i]) {
-						var _copy = this.copyService.copy(item);
-						this.model.data[j] = _copy;
-						_copy.search[i] = null;
+						if (!copied) {
+							//we need only one copy per object
+							item = this.copyService.copy(item);
+							this.model.data[j] = item;
+							copied = true;
+						}
+
+						item.search[i] = null;
 					}
 				}
 			}

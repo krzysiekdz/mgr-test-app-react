@@ -47,7 +47,7 @@ export default class Item extends React.Component {
 
         const visibility = item.hidden ? 'visible-off':'';
         const s = item.search;
-        console.log(s);
+        // console.log(s);
 		return (
 			<tr className={visibility} >
 				<td className="col-md-1"  >
