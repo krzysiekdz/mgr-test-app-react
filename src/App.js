@@ -108,7 +108,9 @@ export default class App extends React.Component {
 			searchText: text });
 	}
 
-	
+	removeItem(item) {
+		this.setState({data: this.addService.remove(item)});
+	}
 
 	render() {
 		const {data, editProp, filterChecked, searchText} = this.state;
@@ -141,6 +143,7 @@ export default class App extends React.Component {
 		        <ContentTable 
 		        	items={data} 
 		        	filterChecked={filterChecked} 
+		        	removeItem={this.removeItem.bind(this)}
 		        ></ContentTable> 
 		     </div>
 		);

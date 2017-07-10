@@ -19,6 +19,7 @@ export default class ContentTable extends React.Component {
 				id={item.id}
 				selectItem={this.selectItem.bind(this)}
 				selected={this.state.selectedItem}
+				removeItem={this.props.removeItem}
 			/>);
 		});
 		// console.log('virtual items:', items);

@@ -51,6 +51,10 @@ export default class Item extends React.Component {
         this.props.selectItem(this.props.item);
     }
 
+    handleRemoveClick() {
+        this.props.removeItem(this.props.item);
+    }
+
 	render() {
 		const {item} = this.props;
         console.log('render item:', this.props.id);
@@ -77,7 +81,7 @@ export default class Item extends React.Component {
                     {item.c4}
                 </td>
                 <td>
-                    <button className="btn btn-default">
+                    <button className="btn btn-default" onClick={this.handleRemoveClick.bind(this)} >
                         <span className="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>

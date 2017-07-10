@@ -22622,6 +22622,11 @@ var App = function (_React$Component) {
 				searchText: text });
 		}
 	}, {
+		key: 'removeItem',
+		value: function removeItem(item) {
+			this.setState({ data: this.addService.remove(item) });
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _state = this.state,
@@ -22659,7 +22664,8 @@ var App = function (_React$Component) {
 				}),
 				_react2.default.createElement(_ContentTable2.default, {
 					items: data,
-					filterChecked: filterChecked
+					filterChecked: filterChecked,
+					removeItem: this.removeItem.bind(this)
 				})
 			);
 		}
@@ -22725,7 +22731,8 @@ var ContentTable = function (_React$Component) {
 					key: item.id,
 					id: item.id,
 					selectItem: _this2.selectItem.bind(_this2),
-					selected: _this2.state.selectedItem
+					selected: _this2.state.selectedItem,
+					removeItem: _this2.props.removeItem
 				}));
 			});
 			// console.log('virtual items:', items);
@@ -22889,6 +22896,11 @@ var Item = function (_React$Component) {
             this.props.selectItem(this.props.item);
         }
     }, {
+        key: 'handleRemoveClick',
+        value: function handleRemoveClick() {
+            this.props.removeItem(this.props.item);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var item = this.props.item;
@@ -22932,7 +22944,7 @@ var Item = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'button',
-                        { className: 'btn btn-default' },
+                        { className: 'btn btn-default', onClick: this.handleRemoveClick.bind(this) },
                         _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
                     )
                 )
@@ -23958,6 +23970,18 @@ var AddService = function () {
 			this.r.resetId();
 
 			return [];
+		}
+	}, {
+		key: 'remove',
+		value: function remove(item) {
+			var data = this.model.data;
+			var index = data.findIndex(function (it) {
+				return it.id === item.id;
+			});
+			if (index > -1) {
+				data.splice(index, 1);
+			}
+			return this.model.data.slice();
 		}
 	}]);
 

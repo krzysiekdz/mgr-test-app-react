@@ -49,5 +49,14 @@ export default class AddService {
 		return [];
 	}
 
+	remove(item) {
+		var data = this.model.data;
+		var index = data.findIndex(it => it.id === item.id);
+		if(index > -1) {
+			data.splice(index, 1);
+		}
+		return this.model.data.slice();
+	}
+
 
 }
