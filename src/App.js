@@ -108,9 +108,11 @@ export default class App extends React.Component {
 			searchText: text });
 	}
 
+	
+
 	render() {
 		const {data, editProp, filterChecked, searchText} = this.state;
-		// console.log('render: App');
+		console.log('render: App');
 		return (
 			<div className="app">
 		    	<Menu

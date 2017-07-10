@@ -19,7 +19,9 @@ export default class Item extends React.Component {
         // console.log('should component update', this.props.id);
         // console.log('should update:', this.props.id, nextProps, nextState);
 
-        if(nextProps.item !== this.props.item)
+        if(nextProps.item !== this.props.item ||
+            (nextProps.selected === this.props.item) || 
+            (this.props.selected === this.props.item) )
             return true;
         else 
             return false;
@@ -41,15 +43,24 @@ export default class Item extends React.Component {
         return search && search[i];
     }
 
+    isSelected(item) {
+        return this.props.item === item;
+    }
+
+    handleClick() {
+        this.props.selectItem(this.props.item);
+    }
+
 	render() {
 		const {item} = this.props;
         console.log('render item:', this.props.id);
 
-        const visibility = item.hidden ? 'visible-off':'';
+        const visibility = item.hidden ? ' visible-off ':'';
+        const selected = this.isSelected(this.props.selected)? ' selected ' : '' ;
         const s = item.search;
         // console.log(s);
 		return (
-			<tr className={visibility} >
+			<tr className={visibility + selected}  onClick={this.handleClick.bind(this)} >
 				<td className="col-md-1"  >
                     {item.id}
                 </td>

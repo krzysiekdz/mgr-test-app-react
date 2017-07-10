@@ -5,6 +5,9 @@ export default class ContentTable extends React.Component {
 
 	constructor() {
 		super();
+		this.state = {
+			selectedItem: null,
+		};
 	}	
 
 	renderItems() {
@@ -14,6 +17,8 @@ export default class ContentTable extends React.Component {
 				item={item} 
 				key= {item.id}
 				id={item.id}
+				selectItem={this.selectItem.bind(this)}
+				selected={this.state.selectedItem}
 			/>);
 		});
 		// console.log('virtual items:', items);
@@ -22,10 +27,19 @@ export default class ContentTable extends React.Component {
 
 	shouldComponentUpdate(nextProps, state) { //jesli tablica z danymi items jest inna to dopiero wtedy robimy render
 		if(nextProps.items !== this.props.items || 
-				this.props.filterChecked !== nextProps.filterChecked)
+				this.props.filterChecked !== nextProps.filterChecked || 
+				this.state.selectedItem !== state.selectItem) //spr czy samo sprawdzenie obiektu state wystarczy - bo chyba robi sie inny
 			return true;
 		else 
 			return false;
+	}
+
+	selectItem(item) {
+		if(item === this.state.selectedItem) {
+			this.setState({selectedItem: null});
+		} else {
+			this.setState({selectedItem: item});
+		}
 	}
 
 

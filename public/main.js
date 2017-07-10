@@ -22629,8 +22629,8 @@ var App = function (_React$Component) {
 			    editProp = _state.editProp,
 			    filterChecked = _state.filterChecked,
 			    searchText = _state.searchText;
-			// console.log('render: App');
 
+			console.log('render: App');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'app' },
@@ -22705,18 +22705,27 @@ var ContentTable = function (_React$Component) {
 	function ContentTable() {
 		_classCallCheck(this, ContentTable);
 
-		return _possibleConstructorReturn(this, (ContentTable.__proto__ || Object.getPrototypeOf(ContentTable)).call(this));
+		var _this = _possibleConstructorReturn(this, (ContentTable.__proto__ || Object.getPrototypeOf(ContentTable)).call(this));
+
+		_this.state = {
+			selectedItem: null
+		};
+		return _this;
 	}
 
 	_createClass(ContentTable, [{
 		key: 'renderItems',
 		value: function renderItems() {
+			var _this2 = this;
+
 			var items = []; //tu beda umieszczane komponenty wirtualne
 			this.props.items.forEach(function (item, i) {
 				items.push(_react2.default.createElement(_Item2.default, {
 					item: item,
 					key: item.id,
-					id: item.id
+					id: item.id,
+					selectItem: _this2.selectItem.bind(_this2),
+					selected: _this2.state.selectedItem
 				}));
 			});
 			// console.log('virtual items:', items);
@@ -22726,7 +22735,17 @@ var ContentTable = function (_React$Component) {
 		key: 'shouldComponentUpdate',
 		value: function shouldComponentUpdate(nextProps, state) {
 			//jesli tablica z danymi items jest inna to dopiero wtedy robimy render
-			if (nextProps.items !== this.props.items || this.props.filterChecked !== nextProps.filterChecked) return true;else return false;
+			if (nextProps.items !== this.props.items || this.props.filterChecked !== nextProps.filterChecked || this.state.selectedItem !== state.selectItem) //spr czy samo sprawdzenie obiektu state wystarczy - bo chyba robi sie inny
+				return true;else return false;
+		}
+	}, {
+		key: 'selectItem',
+		value: function selectItem(item) {
+			if (item === this.state.selectedItem) {
+				this.setState({ selectedItem: null });
+			} else {
+				this.setState({ selectedItem: item });
+			}
 		}
 	}, {
 		key: 'render',
@@ -22839,7 +22858,7 @@ var Item = function (_React$Component) {
             // console.log('should component update', this.props.id);
             // console.log('should update:', this.props.id, nextProps, nextState);
 
-            if (nextProps.item !== this.props.item) return true;else return false;
+            if (nextProps.item !== this.props.item || nextProps.selected === this.props.item || this.props.selected === this.props.item) return true;else return false;
         }
 
         // componentWillUpdate() {
@@ -22860,18 +22879,29 @@ var Item = function (_React$Component) {
             return search && search[i];
         }
     }, {
+        key: 'isSelected',
+        value: function isSelected(item) {
+            return this.props.item === item;
+        }
+    }, {
+        key: 'handleClick',
+        value: function handleClick() {
+            this.props.selectItem(this.props.item);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var item = this.props.item;
 
             console.log('render item:', this.props.id);
 
-            var visibility = item.hidden ? 'visible-off' : '';
+            var visibility = item.hidden ? ' visible-off ' : '';
+            var selected = this.isSelected(this.props.selected) ? ' selected ' : '';
             var s = item.search;
-            console.log(s);
+            // console.log(s);
             return _react2.default.createElement(
                 'tr',
-                { className: visibility },
+                { className: visibility + selected, onClick: this.handleClick.bind(this) },
                 _react2.default.createElement(
                     'td',
                     { className: 'col-md-1' },
