@@ -7,6 +7,7 @@ import UpdateService from './Services/updateService';
 import SwapService from './Services/swapService';
 import FilterService from './Services/filterService';
 import SearchService from './Services/searchService';
+import FetchService from './Services/fetchService';
 
 
 export default class App extends React.Component {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
 		this.swapService = new SwapService();
 		this.filterService = new FilterService();
 		this.searchService = new SearchService();
+		this.fetchService = new FetchService();
 
 		this.state = {
 			data: [],
@@ -112,6 +114,11 @@ export default class App extends React.Component {
 		this.setState({data: this.addService.remove(item)});
 	}
 
+	fetch(count) {
+		// this.setState({data: this.fetchService.fetch(count, this)});
+		this.fetchService.fetch(count, this);
+	}
+
 	render() {
 		const {data, editProp, filterChecked, searchText} = this.state;
 		console.log('render: App');
@@ -139,6 +146,7 @@ export default class App extends React.Component {
 		    		filterItems={this.filterItems.bind(this)}
 		    		searchText={searchText}
 		    		searchAction={this.searchAction.bind(this)}
+		    		fetch={this.fetch.bind(this)}
 		    	></Menu>
 		        <ContentTable 
 		        	items={data} 

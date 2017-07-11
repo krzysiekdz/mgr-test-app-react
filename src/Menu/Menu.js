@@ -5,6 +5,7 @@ import Add from './Add';
 import Replace from './Replace';
 import Update from './Update';
 import Swap from './Swap';
+import Fetch from './Fetch';
 import Input from './Input';
 import Edit from './Edit';
 import Filter from './Filter';
@@ -22,6 +23,7 @@ export default class Menu extends React.Component {
 			replaceFirst, replaceMid, replaceLast ,
 			updateFirst, updateMid, updateLast, partialUpdate,
 			swapFirst, swapMid, swapLast,
+			fetch,
 			editAction, editProp,
 			filterChecked, filterItems,
 			searchText, searchAction,
@@ -35,6 +37,7 @@ export default class Menu extends React.Component {
 		    		<Replace replaceFirst={replaceFirst} replaceMid={replaceMid} replaceLast={replaceLast} />
 		    		<Update  updateFirst={updateFirst} updateMid={updateMid} updateLast={updateLast} partialUpdate={partialUpdate} />
 		    		<Swap swapFirst={swapFirst} swapMid={swapMid} swapLast={swapLast} />
+		    		<Fetch fetch={fetch} />
 		    		<Input />
 		    		<Edit editAction={editAction} editProp={editProp} />
 		    		<Filter filterChecked={filterChecked} filterItems={filterItems} />
