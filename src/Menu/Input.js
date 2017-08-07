@@ -31,7 +31,7 @@ export default class Input extends React.Component {
 
 	render() {
 		const {inputProp} = this.state;
-		console.log('render: input component');
+		// console.log('render: input component');
 		return (
 			<div>
 				 <div className="input-group">

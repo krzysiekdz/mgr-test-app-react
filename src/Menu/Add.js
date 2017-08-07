@@ -32,7 +32,7 @@ export default class Add extends React.Component {
 
 
 	render() {
-		console.log('render: add component');
+		// console.log('render: add component');
 		return (
 			 <div className="container-action">
 			    <button className="btn btn-default btn-menu" name="addFirst" onClick={this.addFirst.bind(this)} >

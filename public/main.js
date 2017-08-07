@@ -22668,8 +22668,8 @@ var App = function (_React$Component) {
 			    editProp = _state.editProp,
 			    filterChecked = _state.filterChecked,
 			    searchText = _state.searchText;
+			// console.log('render: App');
 
-			console.log('render: App');
 			return _react2.default.createElement(
 				'div',
 				{ className: 'app' },
@@ -22793,8 +22793,7 @@ var ContentTable = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var filterChecked = this.props.filterChecked;
-
-			console.log('render: ContentTable');
+			// console.log('render: ContentTable');
 
 			var filteredClass = filterChecked ? 'filtered' : '';
 			return _react2.default.createElement(
@@ -22939,8 +22938,7 @@ var Item = function (_React$Component) {
         key: 'render',
         value: function render() {
             var item = this.props.item;
-
-            console.log('render item:', this.props.id);
+            // console.log('render item:', this.props.id);
 
             var visibility = item.hidden ? ' visible-off ' : '';
             var selected = this.isSelected(this.props.selected) ? ' selected ' : '';
@@ -23290,7 +23288,7 @@ var Add = function (_React$Component) {
 	}
 
 	_createClass(Add, [{
-		key: 'shouldComponentUpdate',
+		key: "shouldComponentUpdate",
 		value: function shouldComponentUpdate(props) {
 			if (props.addFirst.toString() !== this.props.addFirst.toString()) {
 				return true;
@@ -23299,51 +23297,51 @@ var Add = function (_React$Component) {
 			}
 		}
 	}, {
-		key: 'addFirst',
+		key: "addFirst",
 		value: function addFirst() {
 			var count = this.refs.inputAdd.value;
 			this.props.addFirst(count);
 		}
 	}, {
-		key: 'addMid',
+		key: "addMid",
 		value: function addMid() {
 			var count = this.refs.inputAdd.value;
 			this.props.addMid(count);
 		}
 	}, {
-		key: 'addLast',
+		key: "addLast",
 		value: function addLast() {
 			var count = this.refs.inputAdd.value;
 			this.props.addLast(count);
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
-			console.log('render: add component');
+			// console.log('render: add component');
 			return _react2.default.createElement(
-				'div',
-				{ className: 'container-action' },
+				"div",
+				{ className: "container-action" },
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'addFirst', onClick: this.addFirst.bind(this) },
-					'add I'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "addFirst", onClick: this.addFirst.bind(this) },
+					"add I"
 				),
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'addMid', onClick: this.addMid.bind(this) },
-					'add II'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "addMid", onClick: this.addMid.bind(this) },
+					"add II"
 				),
 				_react2.default.createElement(
-					'button',
-					{ className: 'btn btn-default btn-menu', name: 'addLast', onClick: this.addLast.bind(this) },
-					'add III'
+					"button",
+					{ className: "btn btn-default btn-menu", name: "addLast", onClick: this.addLast.bind(this) },
+					"add III"
 				),
 				_react2.default.createElement(
-					'div',
+					"div",
 					null,
-					'add:',
-					_react2.default.createElement('input', { type: 'text', className: 'form-control input100', name: 'input-add', ref: 'inputAdd' }),
-					'elements'
+					"add:",
+					_react2.default.createElement("input", { type: "text", className: "form-control input100", name: "input-add", ref: "inputAdd" }),
+					"elements"
 				)
 			);
 		}
@@ -23760,8 +23758,8 @@ var Input = function (_React$Component) {
 		key: 'render',
 		value: function render() {
 			var inputProp = this.state.inputProp;
+			// console.log('render: input component');
 
-			console.log('render: input component');
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -23824,33 +23822,33 @@ var Input = function (_React$Component) {
 	}
 
 	_createClass(Input, [{
-		key: 'handleInput',
+		key: "handleInput",
 		value: function handleInput(e) {
 			this.props.editAction(e.target.value);
 		}
 	}, {
-		key: 'handleClick',
+		key: "handleClick",
 		value: function handleClick() {
 			this.props.editAction(this.props.editProp);
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
 			var editProp = this.props.editProp;
+			// console.log('render: edit component');
 
-			console.log('render: edit component');
 			return _react2.default.createElement(
-				'div',
-				{ className: 'input-group' },
-				_react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'edit...', name: 'input-edit',
+				"div",
+				{ className: "input-group" },
+				_react2.default.createElement("input", { type: "text", className: "form-control", placeholder: "edit...", name: "input-edit",
 					onChange: this.handleInput.bind(this), value: editProp }),
 				_react2.default.createElement(
-					'span',
-					{ className: 'input-group-btn' },
+					"span",
+					{ className: "input-group-btn" },
 					_react2.default.createElement(
-						'button',
-						{ className: 'btn btn-default', name: 'btn-edit', onClick: this.handleClick.bind(this) },
-						'edit'
+						"button",
+						{ className: "btn btn-default", name: "btn-edit", onClick: this.handleClick.bind(this) },
+						"edit"
 					)
 				)
 			);
@@ -23897,26 +23895,26 @@ var Filter = function (_React$Component) {
 	}
 
 	_createClass(Filter, [{
-		key: 'filterItems',
+		key: "filterItems",
 		value: function filterItems() {
 			this.props.filterItems();
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
 			var checked = this.props.filterChecked;
-			console.log('render: filter component');
+			// console.log('render: filter component');
 			return _react2.default.createElement(
-				'div',
-				{ className: 'container-action' },
+				"div",
+				{ className: "container-action" },
 				_react2.default.createElement(
-					'div',
-					{ className: 'checkbox' },
+					"div",
+					{ className: "checkbox" },
 					_react2.default.createElement(
-						'label',
+						"label",
 						null,
-						_react2.default.createElement('input', { type: 'checkbox', name: 'checkbox-filter', checked: checked, onChange: this.filterItems.bind(this) }),
-						'filter'
+						_react2.default.createElement("input", { type: "checkbox", name: "checkbox-filter", checked: checked, onChange: this.filterItems.bind(this) }),
+						"filter"
 					)
 				)
 			);

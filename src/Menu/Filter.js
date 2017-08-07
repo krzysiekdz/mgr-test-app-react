@@ -14,7 +14,7 @@ export default class Filter extends React.Component {
 
 	render() {
 		const checked = this.props.filterChecked;
-		console.log('render: filter component');
+		// console.log('render: filter component');
 		return (
 			 <div className="container-action">
 			    <div className="checkbox">

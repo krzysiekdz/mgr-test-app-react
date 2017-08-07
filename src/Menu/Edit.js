@@ -17,7 +17,7 @@ export default class Input extends React.Component {
 
 	render() {
 		const {editProp} = this.props;
-		console.log('render: edit component');
+		// console.log('render: edit component');
 		return (
 			<div className="input-group">
 			    <input type="text" className="form-control" placeholder="edit..." name="input-edit" 

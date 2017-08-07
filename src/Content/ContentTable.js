@@ -46,7 +46,7 @@ export default class ContentTable extends React.Component {
 
 	render() {
 		const {filterChecked} = this.props;
-		console.log('render: ContentTable');
+		// console.log('render: ContentTable');
 
 		const filteredClass = filterChecked ? 'filtered' : '';
 		return (

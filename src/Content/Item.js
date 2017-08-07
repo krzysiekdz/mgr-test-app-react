@@ -57,7 +57,7 @@ export default class Item extends React.Component {
 
 	render() {
 		const {item} = this.props;
-        console.log('render item:', this.props.id);
+        // console.log('render item:', this.props.id);
 
         const visibility = item.hidden ? ' visible-off ':'';
         const selected = this.isSelected(this.props.selected)? ' selected ' : '' ;
